@@ -183,9 +183,12 @@ const DraftEditorCompositionHandler = {
         offsetKey,
       );
 
-      const {start, end} = editorState
+      const leafState = editorState
         .getBlockTree(blockKey)
         .getIn([decoratorKey, 'leaves', leafKey]);
+      if (!leafState) return;
+
+      const {start, end} = leafState;
 
       const replacementRange = editorState.getSelection().merge({
         anchorKey: blockKey,
