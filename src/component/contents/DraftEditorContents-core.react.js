@@ -151,7 +151,10 @@ class DraftEditorContents extends React.Component<Props> {
     let lastWrapperTemplate = null;
 
     for (let ii = 0; ii < blocksAsArray.length; ii++) {
-      const block = blocksAsArray[ii];
+      let block = blocksAsArray[ii];
+      if (block.length && block.length > 1) {
+        block = block[1];
+      }
       const key = block.getKey();
       const blockType = block.getType();
 
